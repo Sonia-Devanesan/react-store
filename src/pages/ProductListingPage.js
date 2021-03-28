@@ -29,8 +29,31 @@ class ProductListingPage extends Component {
     alert(product?.name)
   }
 
-  onAdd2Cart = (product = {}) => {
-    alert(product?.id)
+  handAddFun(product)
+  {
+  console.log("clicked", product)
+  console.log("this",this.state)
+  const existingProductIndex = this.state.data.findIndex(p => p.id !== product.id);
+   if(existingProductIndex >= 0) {
+   const cartProducts = this.state.data.slice();
+   const existingProduct = cartProducts[existingProductIndex];
+   const updatedQuantityProduct = {
+    ...existingProduct,
+    quantity: existingProduct.quantity + product.quantity
+  };
+  cartProducts[existingProductIndex] = updatedQuantityProduct;
+  this.setState({
+    data: cartProducts
+  });
+}
+else
+{
+  this.setState({
+    data: [...this.state.data, product]
+
+  });
+}
+
   }
 
   getCategoriesList = () => {
@@ -79,7 +102,7 @@ class ProductListingPage extends Component {
               .filter(product => this.state.selectedCategories.length ? this.state.selectedCategories.includes(product.category) : true)
               .map(product => {
               return (
-                <Col key={product.id}>
+                <Col key={product.id} addFun={this.handAddFun.bind(this)} >
                   <ProductCard
                     id={product.id}
                     name={product.name}
@@ -93,8 +116,10 @@ class ProductListingPage extends Component {
                     onAdd2Cart={(e) => {
                       e.preventDefault()
                       e.stopPropagation()
-                      this.onAdd2Cart(product)
+                      this.handAddFun(product)
+                      //this.onAdd2Cart(product)
                     }}
+                  
                   />
                 </Col>
               )

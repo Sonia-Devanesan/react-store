@@ -15,7 +15,7 @@ const ProductCard = ({
         <div className="product-card-image" style={{ backgroundImage: `url(${image})` }} />
         <Card.Title>{name}</Card.Title>
         <h4>{price}</h4>
-        <Button variant="primary" onClick={onAdd2Cart}>Add to Cart</Button>
+        <Button variant="primary" onClick={onAdd2Cart} Link to="/cart">Add to Cart</Button>
       </Card.Body>
     </Card>
   )

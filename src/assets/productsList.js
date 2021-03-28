@@ -3,7 +3,8 @@ export const productList = {
     {
       id: 1,
       image: "https://m.media-amazon.com/images/I/91ljGPGHzEL._AC_UL640_FMwebp_QL65_.jpg",
-      name: "Polo", category: "Tshirts", variantType: "size", variants: [
+      quantity:2,
+      name: "Polo", category: "Tshirts", variantType: "size",  variants: [
       { size: "S", price: 234 },
       { size: "M", price: 244 },
       { size: "L", price: 254 },
