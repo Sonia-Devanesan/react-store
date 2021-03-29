@@ -15,12 +15,18 @@ class Banner extends React.Component{
 
     render() {
         return (
-         <div>
+            <>
+        <div class="hero-image">
            { items.map(item => (
             <img src={item.img}  alt="homebanner"/>
        ))}
         </div>  
+        <div class="hero-text">
+          <button><Link to ="/listing">View Products</Link></button>
+        </div>
+      </>
         );
+        
       }
 
 }
